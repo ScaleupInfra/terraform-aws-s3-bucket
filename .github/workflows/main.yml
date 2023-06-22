@@ -1,0 +1,44 @@
+name: Terraform AWS
+
+on: 
+  push: 
+    branches: 
+       - main 
+
+jobs: 
+  terrform:
+    name: Terraform 
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS-KEY-ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v1
+        with: 
+          terraform_version: 0.14.8
+
+      - name: Terrraform Init 
+        working-directory: ./main.tf
+        run: terraform init 
+
+      - name: Terraform Plan 
+        working-directory: ./main.tf
+        run: terraform plan 
+
+        - name: Terraform Apply
+        working-directory: ./main.tf
+        run: terraform apply -auto-approve 
+
+      - name: Terraform Destroy
+        working-directory: ./main.tf 
+        run: terraform destroy -auto-approve
+
