@@ -18,5 +18,5 @@ variable "storage_class" {
 
 variable "Environment" { 
     type = string
-}
+} 
 

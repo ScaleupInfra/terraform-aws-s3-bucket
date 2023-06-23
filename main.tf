@@ -8,4 +8,4 @@ module "s3" {
   days = [30, 60, 365]
   storage_class = ["STANDARD_IA", "GLACIER"]
   Environment = "Production"
-}
+} 
