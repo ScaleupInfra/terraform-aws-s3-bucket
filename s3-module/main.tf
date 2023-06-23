@@ -22,7 +22,7 @@ resource "aws_s3_bucket" "example_buckets" {
   }
 
   # Configure lifecycle rules
-  lifecycle_rule {
+  lifecycle_rule { 
     id      = "example_rule"
     enabled = true 
 

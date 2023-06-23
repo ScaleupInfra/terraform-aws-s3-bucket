@@ -16,7 +16,7 @@ variable "storage_class" {
 
 }
 
-variable "Environment" {
+variable "Environment" { 
     type = string
 }
 
