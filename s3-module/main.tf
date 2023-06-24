@@ -1,11 +1,19 @@
+locals {
+  tags = {
+    "Created by"  = "Tushar"
+    "Env"         = "dev"
+    "Company"     = "autostacelupinfra"
+    "Automation"  = "terraform"
+  }
+}
 
 resource "aws_s3_bucket" "example_buckets" {
-  count = length(var.bucket_names)
+  count  = length(var.bucket_names)
   bucket = var.bucket_names[count.index]
 
   # Configure the bucket properties
-  acl    = "private"
-  force_destroy = true
+  acl            = "private"
+  force_destroy  = true
 
   # Configure versioning
   versioning {
@@ -22,9 +30,9 @@ resource "aws_s3_bucket" "example_buckets" {
   }
 
   # Configure lifecycle rules
-  lifecycle_rule {  
+  lifecycle_rule {
     id      = "example_rule"
-    enabled = true 
+    enabled = true
 
     # Transition objects to STANDARD_IA after 30 days
     transition {
@@ -45,8 +53,11 @@ resource "aws_s3_bucket" "example_buckets" {
   }
 
   # Configure tags
-  tags = {
-    Name        = "Example Bucket ${var.bucket_names[count.index]}"
-    Environment = var.Environment
-  }
+  tags = merge(
+    {
+      "Name"        = "Example Bucket ${var.bucket_names[count.index]}"
+      "Environment" = var.Environment
+    },
+    local.tags
+  )
 }
