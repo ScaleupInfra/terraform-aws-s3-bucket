@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  terrform:
+  terraform:
     name: Terraform
     runs-on: ubuntu-latest
 
@@ -26,26 +26,19 @@ jobs:
         with:
           terraform_version: 0.14.8
 
-      - name: Terrraform Init
+      - name: Setup Checkov
+        run: |
+          curl -L https://github.com/bridgecrewio/checkov/releases/latest/download/checkov_linux_amd64 -o checkov
+          chmod +x checkov
+          sudo mv checkov /usr/local/bin/checkov
+
+      - name: Terraform Init
         working-directory: .
         run: terraform init
 
-      - name: Upload Checkov
-        uses: actions/upload-artifact@v2
-        with:
-          name: checkov
-          path: /path/to/checkov
-
-      - name: Download Checkov
-        uses: actions/download-artifact@v2
-        with:
-          name: checkov
-          path: /home/runner/.cache/actions/checkov
-
       - name: Checkov Test
         working-directory: .
-        run: |
-          /home/runner/.cache/actions/checkov/checkov -d .
+        run: checkov -d .
 
       - name: Terraform Plan
         working-directory: .
