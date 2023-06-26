@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  terraform:
+  terrform:
     name: Terraform
     runs-on: ubuntu-latest
 
@@ -21,16 +21,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-1
 
-      - name: Install Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 0.14.8
-
-      - name: Setup Checkov
+      - name: Install pip
         run: |
-          curl -L https://github.com/bridgecrewio/checkov/releases/latest/download/checkov_linux_amd64 -o checkov
-          chmod +x checkov
-          sudo mv checkov /usr/local/bin/checkov
+          sudo apt update
+          sudo apt install -y python3-pip
+
+      - name: Install checkov
+        run: sudo pip3 install checkov
 
       - name: Terraform Init
         working-directory: .
