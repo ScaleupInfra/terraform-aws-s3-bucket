@@ -33,9 +33,10 @@ jobs:
       - name: Checkov Test
         working-directory: .
         run: |
-          curl -LO https://github.com/bridgecrewio/checkov/releases/latest/download/checkov_linux_amd64
-          chmod +x checkov_linux_amd64
-          ./checkov_linux_amd64 -d .
+         curl -LO https://github.com/bridgecrewio/checkov/releases/latest/download/checkov_linux_amd64
+         chmod +x checkov_linux_amd64
+
+         /usr/bin/checkov -d .
 
       - name: Terraform Plan
         working-directory: .
