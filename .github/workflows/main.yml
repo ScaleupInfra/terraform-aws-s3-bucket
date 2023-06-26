@@ -30,6 +30,12 @@ jobs:
         working-directory: .
         run: terraform init
 
+      - name: Download Checkov
+        uses: actions/download-artifact@v2
+        with:
+          name: checkov
+          path: /home/runner/.cache/actions/checkov
+
       - name: Checkov Test
         working-directory: .
         run: |
