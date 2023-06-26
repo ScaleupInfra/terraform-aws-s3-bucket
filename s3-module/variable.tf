@@ -1,12 +1,13 @@
-locals {
-  valid_bucket_name_regex = "^[a-zA-Z0-9]+-[a-zA-Z0-9]+-[a-zA-Z0-9]+-[a-zA-Z0-9]+-[a-zA-Z0-9]+$"
+variable "valid_bucket_name_regex" {
+  type    = string
+  default = "^[a-zA-Z0-9]+-[a-zA-Z0-9]+-[a-zA-Z0-9]+-[a-zA-Z0-9]+-[a-zA-Z0-9]+$"
 }
 
 variable "bucket_names" {
   type = list(string)
 
   validation {
-    condition     = length(var.bucket_names) == 1
+    condition     = length(var.bucket_names) > 0
     error_message = "Invalid bucket name(s). Bucket names must follow the format 'companyname-Teamname-env-module-purpose', e.g., 'autoscaleupinfra-Engineering-dev-s3-module'."
   }
 }
