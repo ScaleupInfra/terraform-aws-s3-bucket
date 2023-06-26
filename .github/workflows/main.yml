@@ -1,16 +1,16 @@
 name: Terraform AWS
 
-on: 
-  push: 
-    branches: 
-       - main 
+on:
+  push:
+    branches:
+      - main
 
-jobs: 
+jobs:
   terrform:
-    name: Terraform 
+    name: Terraform
     runs-on: ubuntu-latest
 
-    steps: 
+    steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
@@ -23,22 +23,28 @@ jobs:
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v1
-        with: 
+        with:
           terraform_version: 0.14.8
 
-      - name: Terrraform Init 
+      - name: Terrraform Init
         working-directory: .
-        run: terraform init 
+        run: terraform init
 
-      - name: Terraform Plan 
+      - name: Checkov Test
         working-directory: .
-        run: terraform plan 
+        run: |
+          curl -L https://github.com/bridgecrewio/checkov/releases/latest/download/checkov_linux_amd64 -o checkov
+          chmod +x checkov
+          ./checkov -d .
+
+      - name: Terraform Plan
+        working-directory: .
+        run: terraform plan
 
       - name: Terraform Apply
         working-directory: .
-        run: terraform apply -auto-approve 
+        run: terraform apply -auto-approve
 
       - name: Terraform Destroy
         working-directory: .
         run: terraform destroy -auto-approve
-
