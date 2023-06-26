@@ -33,7 +33,7 @@ jobs:
       - name: Checkov Test
         working-directory: .
         run: |
-          /github/workspace/checkov -d .
+          /home/runner/.cache/actions/checkov/checkov -d .
 
       - name: Terraform Plan
         working-directory: .
