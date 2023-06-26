@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1 
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -33,9 +33,9 @@ jobs:
       - name: Checkov Test
         working-directory: .
         run: |
-          curl -L https://github.com/bridgecrewio/checkov/releases/latest/download/checkov_linux_amd64 -o checkov
-          chmod +x checkov
-          ./checkov -d .
+          curl -LO https://github.com/bridgecrewio/checkov/releases/latest/download/checkov_linux_amd64
+          chmod +x checkov_linux_amd64
+          ./checkov_linux_amd64 -d .
 
       - name: Terraform Plan
         working-directory: .
