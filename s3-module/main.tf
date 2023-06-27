@@ -1,9 +1,9 @@
 locals {
   tags = {
-    "Created by"  = "Tushar"
-    "Env"         = "dev"
-    "Company"     = "autostacelupinfra"
-    "Automation"  = "terraform"
+    "Created by" = "Tushar"
+    "Env"        = "dev"
+    "Company"    = "autostacelupinfra"
+    "Automation" = "terraform"
   }
 }
 
@@ -12,8 +12,8 @@ resource "aws_s3_bucket" "example_buckets" {
   bucket = var.bucket_names[count.index]
 
   # Configure the bucket properties
-  acl            = "private"
-  force_destroy  = true
+  acl           = "private"
+  force_destroy = true
 
   # Configure versioning
   versioning {

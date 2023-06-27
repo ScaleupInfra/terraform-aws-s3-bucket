@@ -3,6 +3,8 @@
 *.tfstate.backup
 *.tfplan
 
+.idea
+
 # Ignore the .terraform directory
 **/.terraform/*
 
