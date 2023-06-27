@@ -96,7 +96,7 @@ Destroy Infrastructrre  dependencies
 
 ## Support
 
-For support, email fake@fake.com or join our Slack channel.
+Join our Open Source Community on [Slack](https://app.slack.com/huddle/T05EL2WSB2M/C05EL2WTMA5). It's FREE for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally sweet infrastructure.
 
 
 ## 🔗 Links

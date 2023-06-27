@@ -7,7 +7,6 @@ locals {
   }
 }
 
-
 resource "aws_s3_bucket" "example_buckets" {
   count  = length(var.bucket_names)
   bucket = var.bucket_names[count.index]
@@ -57,6 +56,7 @@ resource "aws_s3_bucket" "example_buckets" {
   tags = merge(
     {
       "Name"        = "Example Bucket ${var.bucket_names[count.index]}"
+      "Environment" = var.Environment
     },
     local.tags
   )
