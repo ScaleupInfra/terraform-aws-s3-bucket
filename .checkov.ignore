@@ -1,6 +1,0 @@
-# Ignore specific files
-/c/Users/tusha/terraform-aws-s3-bucket/main.tf
-
-
-# Ignore entire directories
-/c/Users/tusha/terraform-aws-s3-bucket/s3-module
