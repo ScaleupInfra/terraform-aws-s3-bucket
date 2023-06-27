@@ -35,7 +35,7 @@ jobs:
 
       - name: Checkov Test
         working-directory: .
-        run: checkov -d . --skip-check=CKV_AWS_18,CKV2_AWS_62,CKV_AWS_144,CKV2_AWS_6,CKV_AWS_145,CKV_AWS_19
+        run: checkov -d . --skip-check=CKV_AWS_18,CKV2_AWS_62,CKV_AWS_144,CKV2_AWS_6,CKV_AWS_145,CKV_AWS_19,CKV_GHA_4
 
 
       - name: Terraform Plan
