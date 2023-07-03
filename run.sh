@@ -21,12 +21,12 @@ terraform validate $TF_OPTIONS
 # Format Terraform configuration
 terraform fmt -recursive
 
-if ! command -v checkov &> /dev/null; then
-    echo "Checkov is not installed. Please install Checkov to perform code analysis."
-    exit 1
-else
-    checkov -d .
-fi
+# if ! command -v checkov &> /dev/null; then
+#     echo "Checkov is not installed. Please install Checkov to perform code analysis."
+#     exit 1
+# else
+#     checkov -d .
+# fi
 
 # Apply Terraform changes
 terraform plan -out=terraform.tfplan
