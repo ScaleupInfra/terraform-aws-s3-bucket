@@ -96,18 +96,12 @@ Destroy Infrastructrre  dependencies
 
 ## Support
 
-Join our Open Source Community on [Slack](https://app.slack.com/huddle/T05EL2WSB2M/C05EL2WTMA5). It's FREE for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally sweet infrastructure.
-
+Come join our Open Source Community on [Slack](https://app.slack.com/huddle/T05EL2WSB2M/C05EL2WTMA5). It's completely FREE! Our community is the perfect platform for infrastructure enthusiasts like you. Engage in discussions, seek advice, share your ideas, and collaborate with fellow community members to build scalable and robust infrastructure solutions. Don't miss out on this opportunity to be a part of our thriving community!
 
 ## 🔗 Links
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/)
 
-
-
-## Authors
-
-- [@octokatherine](https://www.github.com/octokatherine)
 
 
 ## Contributing
