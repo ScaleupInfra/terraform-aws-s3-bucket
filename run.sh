@@ -31,5 +31,8 @@ terraform fmt -recursive
 # Apply Terraform changes
 terraform plan -out=terraform.tfplan
 
+# Set the Infracost API key
+export INFRACOST_API_KEY=""
 
 # Run Infracost for cost estimation
+infracost breakdown --path .

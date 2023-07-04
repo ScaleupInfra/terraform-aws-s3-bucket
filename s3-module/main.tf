@@ -1,12 +1,3 @@
-locals {
-  tags = {
-    "Created by" = "Tushar"
-    "Env"        = "dev"
-    "Company"    = "autostacelupinfra"
-    "Automation" = "terraform"
-  }
-}
-
 resource "aws_s3_bucket" "example_buckets" {
   count  = length(var.bucket_names)
   bucket = var.bucket_names[count.index]
@@ -60,4 +51,13 @@ resource "aws_s3_bucket" "example_buckets" {
     },
     local.tags
   )
+}
+
+locals {
+  tags = {
+    "Created by" = "Tushar"
+    "Env"        = "dev"
+    "Company"    = "autostacelupinfra"
+    "Automation" = "terraform"
+  }
 }
