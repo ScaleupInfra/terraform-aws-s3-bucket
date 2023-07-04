@@ -26,7 +26,7 @@ terraform fmt -recursive
 #     exit 1
 # else
 #     checkov -d .
-# fi
+# 
 
 # Apply Terraform changes
 terraform plan -out=terraform.tfplan

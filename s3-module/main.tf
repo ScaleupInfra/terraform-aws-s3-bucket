@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "example_buckets" {
-  count  = length(var.bucket_names)
-  bucket = var.bucket_names[count.index]
+  bucket = var.bucket_names[0]
 
   # Configure the bucket properties
   acl           = "private"
@@ -43,10 +42,11 @@ resource "aws_s3_bucket" "example_buckets" {
     }
   }
 
+
   # Configure tags
   tags = merge(
     {
-      "Name"        = "Example Bucket ${var.bucket_names[count.index]}"
+      "Name"        = "Example Bucket ${var.bucket_names[0]}",
       "Environment" = var.Environment
     },
     local.tags
@@ -61,3 +61,7 @@ locals {
     "Automation" = "terraform"
   }
 }
+
+
+
+
