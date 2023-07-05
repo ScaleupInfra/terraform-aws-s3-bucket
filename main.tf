@@ -6,6 +6,5 @@ module "s3" {
   sse_algorithm = "AES256"
   days          = [30, 60, 365]
   storage_class = ["STANDARD_IA", "GLACIER"]
-  Environment   = "Production"
 }
 

@@ -23,7 +23,3 @@ variable "storage_class" {
   type = list(string)
 }
 
-variable "Environment" {
-  type    = string
-  default = "Production"
-}
