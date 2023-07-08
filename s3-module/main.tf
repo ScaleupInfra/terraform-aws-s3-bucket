@@ -1,5 +1,15 @@
+locals {
+  tags = {
+    "Created by" = "Tushar"
+    "Env"        = "dev"
+    "Company"    = "autostacelupinfra"
+    "Automation" = "terraform"
+  }
+}
+
 resource "aws_s3_bucket" "example_buckets" {
-  bucket = var.bucket_names[0]
+  count  = length(var.bucket_names)
+  bucket = var.bucket_names[count.index]
 
   # Configure the bucket properties
   acl           = "private"
@@ -42,25 +52,12 @@ resource "aws_s3_bucket" "example_buckets" {
     }
   }
 
-
   # Configure tags
   tags = merge(
     {
-      "Name"        = "Example Bucket ${var.bucket_names[0]}",
+      "Name"        = "Example Bucket ${var.bucket_names[count.index]}"
+      "Environment" = var.Environment
     },
     local.tags
   )
 }
-
-locals {
-  tags = {
-    "Created by" = "Tushar"
-    "Env"        = "dev"
-    "Company"    = "autostacelupinfra"
-    "Automation" = "terraform"
-  }
-}
-
-
-
-
