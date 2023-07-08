@@ -55,8 +55,7 @@ resource "aws_s3_bucket" "example_buckets" {
   # Configure tags
   tags = merge(
     {
-      "Name"        = "Example Bucket ${var.bucket_names[count.index]}"
-      "Environment" = var.Environment
+      "Name" = "Example Bucket ${var.bucket_names[count.index]}"
     },
     local.tags
   )
