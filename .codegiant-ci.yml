@@ -1,0 +1,81 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: terraform-plan
+spec:
+  params:
+    - name: ARGS
+      description: The terraform cli commands to run
+      type: array
+      default:
+        - init
+  steps:
+    - name: init
+      image: 'docker.io/hashicorp/terraform:light'
+      command:
+        - terraform
+        - init
+    - name: terraform-plan
+      image: 'docker.io/hashicorp/terraform:light'
+      env:
+        - name: AWS_ACCESS_KEY_ID
+          value: ""
+        - name: AWS_SECRET_ACCESS_KEY
+          value: ""
+      command:
+        - terraform
+        - plan
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: terraform-apply
+spec:
+  params:
+    - name: ARGS
+      description: The terraform cli commands to run
+      type: array
+      default:
+        - init
+  steps:
+    - name: init
+      image: 'docker.io/hashicorp/terraform:light'
+      command:
+        - terraform
+        - init
+    - name: terraform-apply
+      image: 'docker.io/hashicorp/terraform:light'
+      env:
+        - name: AWS_ACCESS_KEY_ID
+          value: ""
+        - name: AWS_SECRET_ACCESS_KEY
+          value: ""
+      command:
+        - terraform
+        - apply
+        - '-auto-approve'
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: terraform-pipeline
+spec:
+  tasks:
+    - name: terraform-plan
+      taskRef:
+        name: terraform-plan
+
+    - name: terraform-apply
+      taskRef:
+        name: terraform-apply
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: run-terraform-pipeline
+spec:
+  pipelineRef:
+    name: terraform-pipeline
